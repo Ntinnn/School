@@ -1,82 +1,56 @@
 const readline = require('readline');
+const charaSamuraiX = [
+    { nama: "Kaoru Kamiya", jenisKelamin: "Perempuan", Peran: "Protagonis"},
+    { nama: "Kenshin Himura", jenisKelamin: "Laki - Laki", Peran: "Protagonis"},
+    { nama: "Shishio Makoto", jenisKelamin: "Laki - Laki", Peran: "Antagonis"},
+];
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-const inventaris = [];
-
-function penambahanProduk() {
-    rl.question('Masukkan nama produk: ', (name) => {
-        rl.question('Masukkan deskripsi produk: ', (deskripsi) => {
-            rl.question('Masukkan tanggal kedaluwarsa : ', (tanggalExpired) => {
-                const produk = {
-                    nama: nama,
-                    deskripsi: deskripsi,
-                    tanggalExpired: tanggalExpired
-                };
-                inventaris.push(produk);
-                console.log(`${name} telah ditambahkan.`);
-                showMainMenu();
+function tampilkanDaftarKarakterBerdasarkanJenisKelamin() {
+    rl.question("Masukkan Jenis Kelamin Karakter: ", (jenisKelamin) => {
+        const karakterBerdasarkanJenisKelamin = charaSamuraiX.filter(chara => chara.jenisKelamin === jenisKelamin);
+        if (karakterBerdasarkanJenisKelamin.length > 0) {
+            console.log("Daftar Karakter berdasarkan Jenis Kelamin: ");
+            karakterBerdasarkanJenisKelamin.forEach(chara => {
+                console.log(`Nama: ${chara.nama}, Jenis Kelamin: ${chara.jenisKelamin}, Peran: ${chara.Peran}`);
             });
-        });
-    });
-}
-
-function menghapus() {
-    console.log('=== Daftar Produk ===');
-    inventaris.forEach((produk, index) => {
-        console.log(`${index + 1}. Nama: ${produk.nama}, Deskripsi: ${produk.deskripsi}, Tanggal Kedaluwarsa: ${product.tanggalExpired}`);
-    });
-
-    rl.question('Masukkan nomor produk yang ingin dihapus: ', (produkNumber) => {
-        const produkIndex = parseInt(produkNumber) - 1;
-
-        if (produkIndex >= 0 && produkIndex < inventaris.length) {
-            const deletedProduct = inventaris.splice(produkIndex, 1);
-            console.log(`${deletedProduct[0].nama} sudah dihapus dari inventaris.`);
         } else {
-            console.log('Nomor produk tidak valid.');
+            console.log("Tidak ada Karakter dengan Jenis Kelamin tersebut.");
         }
-
-        showMainMenu();
+        rl.close();
     });
 }
 
-function daftarProduk() {
-    console.log('Daftar Produk');
-    inventory.forEach((produk, index) => {
-        console.log(`${index + 1}. Nama: ${produk.nama}, Deskripsi: ${produk.deskripsi}, Tanggal Kedaluwarsa: ${produk.tanggalExpired}`);
-    });
-    showMainMenu();
-}
-
-function showMainMenu() {
-    console.log('\n Menu Utama');
-    console.log('1. Tambah Produk');
-    console.log('2. Hapus Produk');
-    console.log('3. Lihat Daftar Produk');
-    console.log('4. Keluar');
-
-    rl.question('Pilih menu: ', (pilihan) => {
-        switch (pilihan) {
-            case '1':
-                penambahanProduk();
-                break;
-            case '2':
-                menghapus();
-                break;
-            case '3':
-                daftarProduk();
-                break;
-            case '4':
-                rl.close();
-                break;
-            default:
-                console.log('Menu tidak valid. Silakan pilih menu yang valid.');
-                showMainMenu();
+function tampilkanDaftarKarakterBerdasarkanPeran() {
+    rl.question("Masukkan Peran Karakter (Protagonis/Antagonis): ", (Peran) => {
+        const karakterBerdasarkanPeran = charaSamuraiX.filter(karakter => karakter.Peran === Peran);
+        if(karakterBerdasarkanPeran.length > 0) {
+            console.log("Daftar Karakter berdasarkan Peran: ");
+            karakterBerdasarkanPeran.forEach(chara => {
+                console.log(`Nama: ${chara.nama}, Jenis Kelamin: ${chara.jenisKelamin}, Peran: ${chara.Peran}`);
+            });
+        } else {
+            console.log("Karakter dengan Peran tersebut tidak ada.");
         }
+        rl.close();
     });
 }
 
-showMainMenu();
+console.log("Pilih Nomor: ");
+console.log("1. Menampilkan Daftar Karakter dengan Jenis Kelamin");
+console.log("2. Menampilkan Daftar Karakter dengan Peran");
+
+rl.question("Masukkan Nomor: ", (Nomor) => {
+    if(Nomor === "1"){
+        tampilkanDaftarKarakterBerdasarkanJenisKelamin();
+    } else if(Nomor === "2"){
+        tampilkanDaftarKarakterBerdasarkanPeran();
+    } else {
+        console.log("Nomor Operasi tidak Valid/Cocok");
+        rl.close();
+    }
+});

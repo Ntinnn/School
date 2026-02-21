@@ -1,77 +1,58 @@
-let restoran = {
-    menu : {
-      nasi_goreng: 15,
-      mie_goreng: 12,
-      ayam_goreng: 20,
-      es_teh: 3,
-      es_jeruk: 4,
-    },
-    
-    stok : {
-      telur: 50,
-      mie: 100,
-      ayam: 30,
-    },
-    riwayatPesanan: [],
-    tambahMenu(nama, harga) {
-      this.menu[nama] = harga;
-    },
-    updateHargaMenu(nama, hargaBaru) {
-      if (this.menu.hasOwnProperty(nama)) {
-        this.menu[nama] = hargaBaru;
-      } else {
-        console.log("Menu tidak ditemukan.");
-      }
-    },
-    tampilkanMenu() {
-      console.log("Menu Restoran:");
-      for (let item in this.menu) {
-        console.log(`${item}: Rp${this.menu[item]}`);
-      }
-    },
-    pesan(namaMenu, jumlah) {
-      if (this.menu.hasOwnProperty(namaMenu)) {
-        if (jumlah > 0) {
-          if (this.stok[namaMenu] >= jumlah) {
-            const totalHarga = this.menu[namaMenu] * jumlah;
-            this.stok[namaMenu] -= jumlah;
-            this.riwayatPesanan.push({ menu: namaMenu, jumlah, totalHarga });
-            console.log(`Pesanan berhasil! Total harga: Rp${totalHarga}`);
-          } else {
-            console.log(`Stok ${namaMenu} tidak mencukupi.`);
-          }
+const readline = require('readline');
+
+const anggotaJKT48 = [
+    {nama: "Freya Jayawardana", posisi: "Dancer", umur: 17},
+    {nama: "Shania Gracia", posisi: "Dancar", umur: 24},
+    {nama: "Shani Indira Natio", posisi: "Singer", umur: 24},
+];
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function tampilkanDaftarAnggotaBerdasarkanPosisi(){
+    rl.question("Masukkan posisi anggota (Singer/Dancer): ", (posisi) =>{
+        const BerdasarkanPosisi = anggotaJKT48.filter(anggota => anggota.posisi === posisi);
+        if(BerdasarkanPosisi.length > 0) {
+            console.log("Daftar Anggota berdasarkan Posisi:");
+            BerdasarkanPosisi.forEach(anggota => {
+                console.log (`Nama: ${anggota.nama}, Posisi: ${anggota.posisi}, Umur: ${anggota.umur} Tahun`);
+            });
         } else {
-          console.log("Jumlah pesanan harus lebih dari 0.");
+            console.log("Tidak ada anggota dengan posisi tersebut.");
         }
-      } else {
-        console.log("Menu tidak ditemukan.");
-      }
-    },
-    totalPembayaran() {
-      let total = 0;
-      for (let pesanan of this.riwayatPesanan) {
-        total += pesanan.totalHarga;
-      }
+        rl.close();
+    });
+}
 
-      console.log(`Total Pembayaran: Rp${total}`);
-    },
+function tampilkanDaftarAnggotaBerdasarkanUmur() {
+    rl.question("Masukkan rentang umur (17-27): ", (rentangUmur) =>{
+        const [umurMin,umurMax] = rentangUmur.split("-").map(Number);
+        const anggotaBerdasarkanUmur = anggotaJKT48.filter(anggota => anggota.umur >= umurMin && anggota.umur <= umurMax);
+        if (anggotaBerdasarkanUmur.length > 0){
+            console.log("Daftar Anggota berdasarkan Umur:");
+            anggotaBerdasarkanUmur.forEach(anggota => {
+                console.log (`Nama: ${anggota.nama}, Posisi: ${anggota.posisi}, Umur: ${anggota.umur} Tahun`);
+            });
+        } else {
+            console.log("Tidak ada anggota dalam rentang umur tersebut.");
+        }
+        rl.close();
+    });
+}
 
-    tampilkanRiwayatPesanan() {
-      console.log("Riwayat Pesanan:");
-      for (let pesanan of this.riwayatPesanan) {
-        console.log(`${pesanan.menu}: ${pesanan.jumlah} x Rp${pesanan.menu} = Rp${pesanan.totalHarga}`);
-      }
-    },
-  };
+console.log("Pilih Nomor:");
+console.log("1. Menampilkan Daftar Anggota berdasarkan Posisi");
+console.log("2. Menampilkan Daftar Anggota berdasarkan Umur");
 
-  restoran.tambahMenu("soto", 10.000);
-  restoran.tambahMenu("bakso", 12.000);
-  
-  restoran.tampilkanMenu();
-  
-  restoran.pesan("nasi_goreng", 2);
-  restoran.pesan("ayam_goreng", 1);
-  restoran.pesan("soto", 3);
-  
-  restoran.totalPembayaran();
-  restoran.tampilkanRiwayatPesanan();
+rl.question("Masukkan Nomor Pilihan: ", (opsi) => {
+    if(opsi === "1"){
+        tampilkanDaftarAnggotaBerdasarkanPosisi();
+    } else if(opsi === "2") {
+        tampilkanDaftarAnggotaBerdasarkanUmur();
+    } else {
+        console.log("Nomor Pilihan yang Anda Pilih Tidak Valid.");
+        rl.close();
+    };
+});
