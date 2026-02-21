@@ -1,20 +1,33 @@
-const readline = require('readline');
+const readline = require(`readline`);
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-let kurir
-rl.question("Masukan jenis pengiriman yang ingin Kamu pilih (Regular,Express,Kilat) " , (input) => {
-    kurir = input.toLowerCase()
-    if (kurir == "regular") {
-        console.log("Paket Kamu akan sampai dalam 10 hari")
-    } else if (kurir == "express") {
-        console.log("Paket kamu akan sampai dalam 5 Hari")
-    } else if (kurir == "kilat") {
-        console.log("Paket kamu akan sampai dalam 1 menit")
-    } else {
-        console.log("Opsi Pengiriman yang Kamu pilih tidak Valid / Cocok")
-    }
-    rl.close();
+var total = {};
+let i = 0;
+
+rl.question(`Jumlah barang yang ingin Kamu masukkan ke stok ;`, (jumlah) => {
+    let inputTotal = () => {
+        rl.question(`Masukkan nama barang ;`, (namaBarang) => {
+            rl.question(`Jumlah bertambah untuk setiap barang ${namaBarang} ;`, (tambahBarang) => {
+                tambahBarang = Number(tambahBarang);
+                total[namaBarang] = tambahBarang;
+                i++;
+                if (i < jumlah) {
+                    inputTotal();
+                } else {
+                    let totalNama = [];
+                    let totalBarang = 0;
+                    for (let [namaBarang, tambahBarang] of Object.entries(total)) {
+                        totalNama.push(namaBarang)
+                        totalBarang += tambahBarang;
+                    }
+                    console.log(`Total penambahan ${totalNama.join(`, `)}: ${totalBarang}`);
+                    rl.close();
+                };
+            });
+        });
+    };
+    inputTotal();
 });

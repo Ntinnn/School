@@ -4,13 +4,13 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Masukan total belanja yang Kamu beli ", (input) => {
-    total= parseFloat(input);
-    if (input >= 200000) {
-        diskon = input - input/10;
-        console.log(`Kamu akan mendapatan diskon 100%,Kamu hanya perlu bayar ${diskon}`);
-    } else {
-        console.log(`Total yang perlu Anda bayar adalah ${total}`);
-    }
-        rl.close();
+rl.question("Masukan angka: ", function(input){
+    const angka = parseInt(input)
+    let i = 0
+
+     while(angka>0 && i <= angka){
+        console.log(i)
+        i+=2
+     }
+    rl.close()
 })

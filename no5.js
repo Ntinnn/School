@@ -1,11 +1,6 @@
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+let colors = ["merah","hijau","biru","kuning","ungu"];
+console.log(colors);
 
-rl.question("Masukkan umur Kamu ", (umur) => {
-    if(umur >=20){
-        console.log("Kamu akan mendapatkan hadiah setelah membeli barang yang kamu ingin beli!")
-    }
-})
+let arr = colors.splice((1),(2),'jingga','putih');
+console.log(arr);
+console.log(colors)

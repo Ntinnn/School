@@ -1,17 +1,5 @@
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+let numbers = [1,2,3,4,5,6,7,8,9,10];
+console.log(numbers);
 
-let jawaban = 0;
-rl.question('Halo! Selamat datang di Perpus! \n Apakah Kamu ingin meminjam sebuah Buku? (Ya/Tidak):', (input) => {
-    rl.question('Berapa buku yang ingin Kamu pinjam?',(input1) => {
-        input.toLowerCase() === 'Ya'
-        jawaban = parseInt (input1);
-        if (jawaban > 6) {
-            console.log('Kami tidak bisa meminjamkan buku Sebanyak itu');
-        }
-        rl.close();
-    });
-});
+let potonganArray = numbers.slice(3,6);
+console.log(potonganArray);

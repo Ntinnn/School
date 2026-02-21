@@ -4,16 +4,11 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-function angkaGenap (angka){
-    if (angka % 2 !== 0) {
-        console.log ("Angka " + angka + "adalah angka ganjil");
-    } if (angka % 2 === 0) {
-        console.log ("Angka " + angka + "adalah angka genap");
-    }
-}
+let fruits = ["apel","jeruk","pisang"];
+console.log(fruits);
 
-rl.question("Masukkan angka :", (angka) => {
-    angka = parseInt(angka);
-    angkaGenap(angka);
-    rl.close();
-});
+fruits.unshift("anggur","markisa","srikaya");
+console.log("Buah yang di tambah: ",fruits);
+
+fruits.shift();
+console.log("Buah yang di hapus: ",fruits);

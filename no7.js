@@ -4,14 +4,13 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let book = ["Buku Novel", "Buku Romance","Buku Horror"];
-rl.question("Halo! Kembali lagi dengan Perpus Kita!\n Tolong masukan nama buku yang ingin Kamu pinjam ", (input) => {
-    let books = input;
-    if (book.includes(books)){
-        console.log("Buku bisa dipinjamkan.");
-    } else {
-        console.log ("Buku sedang dipinjam oleh orang lain.");
-    }
-    rl.close();
-}
-)
+rl.question("Masukan angka: ", function(input){
+    const angka = parseInt(input)
+    let i = 1
+
+    do{
+        console.log(i)
+        i+=2
+    } while(i>0 && i <= angka)
+    rl.close()
+})
