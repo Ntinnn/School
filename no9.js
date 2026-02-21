@@ -1,19 +1,19 @@
-const readline = require(`readline`);
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+function isPrime(number) {
+    if (number <= 1) {
+        return false;
+    }
 
-rl.question(`Isi kolom ini dengan angka positif `, (angka) => {
-    for (let i = 2; i < angka; i++) {
-        let ganjil = false;
-        for (let j = 2; j <= i; j++) {
-            if (i % j == 0 && j != i) {
-                ganjil = true;
-            }
-        }
-        if (ganjil == false) {
-            console.log(i);
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+            return false;
         }
     }
-})
+    return true;
+}
+
+const angka = 9;
+if (isPrime(angka)) {
+    console.log(angka + " adalah bilangan prima");
+} else {
+    console.log(angka + " bukan bilangan prima");
+}

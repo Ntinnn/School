@@ -1,16 +1,7 @@
-const readline = require('readline');
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-rl.question("Masukan angka: ", function(input){
-    const angka = parseInt(input)
-    let i = 1
-
-    do{
-        console.log(i)
-        i+=2
-    } while(i>0 && i <= angka)
-    rl.close()
-})
+function gabungString(string1, string2) {
+    return string1 + string2;
+}
+const kata1 = "Halo";
+const kata2 = "Semua";
+const hasilGabung = gabungString(kata1, kata2);
+console.log(hasilGabung);

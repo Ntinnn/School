@@ -1,32 +1,61 @@
-const readline = require(`readline`);
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const perpustakaan = [];
 
-var menu = {};
-let i = 0;
-rl.question(`Isi dengan jumlah menu yang ingin kamu pesan `, (jumlahMenu) => {
-    let inputMenu = () => {
-      rl.question(`Isi nama menu yang Kamu mau ;`, (namaMenu) => {
-          rl.question(`Isi harga menu yang Kamu pesan ${namaMenu} ;`, (hargaMenu) => {
-              hargaMenu = Number(hargaMenu);
-              menu[namaMenu] = hargaMenu;
-              i++;
-              if (i < jumlahMenu) {
-                  inputMenu();
-              } else {
-                  let totalMenu = [];
-                  let totalHarga = 0;
-                  for (let [namaMenu, hargaMenu] of Object.entries(menu)) {
-                      totalMenu.push(namaMenu)
-                      totalHarga += hargaMenu;
-                  }
-                  console.log(`Total penjumlahan biaya untuk pembelian ${totalMenu.join(`, `)}; Rp ${totalHarga}`);
-                  rl.close();
-              };
-          });
-       });
+function tambahBuku(judul, penulis, tahun, jumlahSalinan, nilai) {
+    const buku = {
+        judul: judul,
+        penulis: penulis,
+        tahun: tahun,
+        jumlahSalinan: jumlahSalinan,
+        nilai: nilai
     };
-    inputMenu();
-});
+    perpustakaan.push(buku);
+    console.log(`Buku dengan judul"${judul}" sudah ditambahkan ke perpustakaan.`);
+}
+
+function hapusBuku(judul) {
+    const index = perpustakaan.findIndex(buku => buku.judul === judul);
+    if (index !== -1) {
+        perpustakaan.splice(index, 1);
+        console.log(`Buku dengan judul "${judul}" sudah dihapus dari perpustakaan.`);
+    } else {
+        console.log(`Buku yang berjudul "${judul}" tidak ditemukan dalam perpustakaan.`);
+    }
+}
+
+function lihatDaftarBuku() {
+    if (perpustakaan.length === 0) {
+        console.log("Perpustakaan kosong.");
+    } else {
+        console.log("Daftar Buku di Perpustakaan:");
+        perpustakaan.forEach((buku, index) => {
+            console.log(`${index + 1}. Judul: ${buku.judul}, Penulis: ${buku.penulis}, Tahun: ${buku.tahun}`);
+        });
+    }
+}
+
+function updateBuku(judul, newData) {
+    const buku = perpustakaan.find(buku => buku.judul === judul);
+    if (buku) {
+        Object.assign(buku, newData);
+        console.log(`Informasi buku "${judul}" telah diperbarui.`);
+    } else {
+        console.log(`Buku dengan judul "${judul}" tidak ditemukan dalam perpustakaan.`);
+    }
+}
+
+function totalNilaiBuku() {
+    let total = 0;
+    perpustakaan.forEach(buku => {
+        total += buku.nilai * buku.jumlahSalinan;
+    });
+    return total;
+}
+
+tambahBuku("Doraemon", "Fujiko F Fujio", 1970, 9, 3);
+tambahBuku("Inuyasha", "Rumiko Takahashi", 1996, 11, 13);
+lihatDaftarBuku();
+hapusBuku("Doraemon");
+lihatDaftarBuku();
+updateBuku("Inuyasha", { jumlahSalinan: 6 });
+lihatDaftarBuku();
+console.log("Total Nilai Buku di Perpustakaan:", totalNilaiBuku());
