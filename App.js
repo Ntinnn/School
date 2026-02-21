@@ -2,29 +2,33 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Login from './Login.js';
+import Home from './Home.js';
+import Splash from './Splash.js';
+import Intro from './Intro.js';
+import Persegi from './Persegi.js';
+import PersegiPanjang from './PersegiPanjang.js';
+import Segitiga from './Segitiga.js';
+import Lingkaran from './Lingkaran.js';
+import JajarGenjang from './JajarGenjang.js';
+import Trapesium from './Trapesium.js';
+import Kubus from './Kubus.js';
+import Balok from './Balok.js';
+import Prisma from './Prisma.js';
+import Tabung from './Tabung.js';
+import Limas from './Limas.js';
 
-//  Membuat tumpukan navigasi (stack navigator) dengan menggunakan library React Navigation
 const Stack = createStackNavigator();
 
-const App = () => {
+export default function App() {
     return (
-        // Mengelola navigasi dalam aplikasi menggunakan React Navigation.
         <NavigationContainer>
-            {/* Inisialisasi tumpukan navigator dengan rute awal yang ditentukan sebagai "Home"  */}
-            <Stack.Navigator initialRouteName='Login'>
-                {/* 
-                Setiap "Stack.Screen" merepresentasikan satu rute (layar) dalam tumpukan navigator. Anda dapat menambahkan lebih banyak Stack.Screen sesuai dengan kebutuhan aplikasi.
-                */}
-                {/* Contoh */}
-                {/* <Stack. Screen name="NamaRute" component (NamaRuteComponent) /> */}
-                {/* Layar "Home" akan menggunakan komponen HomeScreen untuk tampilannya.  */}
-                <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-                {/* Layar "Profiles" akan menggunakan komponen ProfilesScreen untuk tampilannya. */}
-                {/* <Stack.Screen name="Profiles" component={ProfilesScreen} /> */}
-                </Stack.Navigator>
+            <Stack.Navigator initialRouteName='Limas'>
+                <Stack.Screen name="Kubus" component={Kubus} options={{ headerShown: false }} />
+                <Stack.Screen name="Balok" component={Balok} options={{headerShown: false}}/>
+                <Stack.Screen name="Prisma" component={Prisma} options={{headerShown: false}}/>
+                <Stack.Screen name="Tabung" component={Tabung} options={{headerShown: false}}/>
+                <Stack.Screen name="Limas" component={Limas} options={{headerShown: false}}/>
+            </Stack.Navigator>
         </NavigationContainer>
     )
 }
-
-export default App;
