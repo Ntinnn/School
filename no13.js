@@ -1,11 +1,13 @@
-animals = [
-    { nama: "Leo", jenis: "Singa", jumlahKaki: 4},
-    { nama: "Polly", jenis: "Burung Kakatua", jumlahKaki: 2},
-    { nama: "Bella", jenis: "Anjing", jumlahKaki: 2},
-    { nama: "Whiskers", jenis: "Whiskers", jumlahKaki: 4 }
-]
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-jumlahKaki = animals.filter(hewan => {
-    return hewan.jumlahKaki > 4
-})
-console.log(jumlahKaki)
+rl.question("Masukkan angka yang ingin disimpan: ", (int) => {
+    let total = 5;
+    console.log("Nilai awal :", total)
+    total *= parseInt(int);
+    console.log(`Hasil pengkalian: ${total}`)
+    rl.close();
+});

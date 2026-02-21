@@ -1,11 +1,13 @@
-ciites = [
-    {nama: "Jakarta", populasi: "10 Jt", negara: "Indonesia"},
-    {nama: "Shanghai", populasi: "29,21 Jt", negara: "China"},
-    {nama: "New York", populasi: "8,4 Jt", negara: "Amerika Serikat"},
-    {nama: "Tokyo", populasi: "37,19 Jt", negara: "Jepang"},
-]
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-namaNegara = ciites.map(country => {
-    return country.negara
-})
-console.log(namaNegara)
+rl.question("Masukkan angka yang ingin disimpan: ", (int) => {
+    let total = 5;
+    console.log("Nilai awal :", total)
+    total += parseInt(int);
+    console.log(`Hasil penambahan: ${total}`)
+    rl.close();
+});

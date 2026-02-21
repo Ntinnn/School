@@ -1,12 +1,18 @@
-foods = [
-    {nama: "Nasi Goreng", jenis: "Makanan Berat",kalori: 400}, 
-    {nama: "Soto Mie", jenis: "Makanan Berat", kalori: 297}, 
-    {nama: "Buger", jenis: "Makanan Ringan", kalori: 300}, 
-    {nama: "Soto Kambing", jenis: "Makanan Berat", kalori: 400},
-    {nama: "Ayam Goreng", jenis: "Makanan Berat", kalori: 245}
-];
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-kaloriMakanan = foods.filter(makanan => {
-    return makanan.kalori > 300
-})
-console.log(kaloriMakanan)
+rl.question("Masukkan angka pertama: ", (int) => {
+    rl.question("Masukkan angka kedua: ", (desc) =>{
+        let strInt1 = parseInt (int);
+        let strInt2 = parseInt (desc);
+        if(strInt1 > strInt2){
+            console.log(`angka ${int} lebih besar dari angka ${desc}`);
+        } else {
+            console.log(`angka ${int} tidak lebih besar dari angka ${desc}`);
+        }
+        rl.close();
+});
+});

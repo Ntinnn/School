@@ -1,12 +1,13 @@
-fruits = [
-    { nama: "Apel", warna: "Merah", rasa: "Manis dan Sedikit Asam"},
-    { nama: "Stroberi", warna: "Merah", rasa: "Manis dan Sedikit Asam"},
-    { nama: "Jeruk", warna: "Oranye", rasa: "Manis dan Segar"},
-    { nama: "Mangga", warna: "Kuning", rasa: "Manis dan Aromatik"},
-    { nama: "Anggur", warna: "Merah", rasa: "Manis"}
-]
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-namaBuah = fruits.map(buah => {
-    return buah.nama
-})
-console.log(namaBuah)
+rl.question("Masukkan angka yang ingin disimpan: ", (int) => {
+    let total = 5;
+    console.log("Nilai awal :", total)
+    total -= parseInt(int);
+    console.log(`Hasil pengurangan: ${total}`)
+    rl.close();
+});

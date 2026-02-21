@@ -1,7 +1,15 @@
-songs = [
-    { judul: "Greedy", penyanyi: "Ariana Grande", durasi: "3:45 Menit"},
-    { judul: "From The Start", penyanyi: "Laufey", durasi: "2.50 Menit" },
-    { judul: "Champion", penyanyi: "Neoni,burnboy", durasi: "3:54 Menit"}
-];
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-console.log("Nama penyanyi From The Start adalah: " + songs[1].penyanyi)
+rl.question("Masukkan angka pertama : ", (int) => {
+rl.question("Masukkan angka kedua : ", (desc) =>{
+    const strInt1 = parseInt (int);
+    const strInt2 = parseInt (desc);
+    const jumlah = strInt1 + strInt2;
+    console.log(jumlah)
+    rl.close();
+});
+});

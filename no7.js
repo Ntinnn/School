@@ -1,11 +1,18 @@
-cars = [
-    { merek: "Chevrolet", tahun: 2022, harga: "Rp 800 juta"},
-    { merek: "Audi", tahun: 2022, harga: "Rp 900 juta"},
-    { merek: "Honda", tahun: 2022, harga: "Rp 400 juta"},
-    { merek: "Nissan", tahun: 2023, harga: "Rp 350 juta"},
-    { merek: "Subaru", tahun: 2022 , harga: "Rp 550 juta"}
-]
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-cars.forEach(item => {
-    console.log(`Tahun : ${item.tahun}`)
+rl.question("Masukkan angka pertama: ", (int) => {
+rl.question("Masukkan angka  kedua: ", (desc) =>{
+rl.question("Masukkan angka  ketiga: ", (str) =>{
+    const strInt1 = parseInt (int);
+    const strInt2 = parseInt (desc);
+    const strInt3 = parseInt (str);
+    const jumlah = strInt1 * strInt2 * strInt3;
+    console.log(jumlah);
+    rl.close();
+});
+});
 });

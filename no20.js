@@ -4,14 +4,14 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.question("Isi Total Belanja Kamu ", (input)=>{
-    totBelanja=parseFloat(input);
-    diskon=totBelanja > 100000 ? totBelanja * 0.1 : 0;
-    totSehabisDiskon = totBelanja - diskon;
-
-    console.log (`Total Belanja Kamu Rp${totBelanja}`);
-    console.log(totBelanja > 100000 ? `Kamu dapet diskon sebanyak 10% dengan harga = Rp${diskon}`: "Kamu tidak mendapatkan diskon...");
-    console.log(`Total belanja Kamu setelah diskon adalah Rp${totSehabisDiskon}`);
-
-    rl.close();
+rl.question("Masukkan angka: ", (int) => {
+        let strInt1 = parseInt (int);
+        let x = 5;
+        let y = 100;
+        if(strInt1 > x || strInt1 < y){
+            console.log(`angka ${int} sesuai dengan salah satu atau semua kriteria`);
+        } else {
+            console.log(`angka ${int} tidak sesuai dengan salah satu atau semua kriteria`);
+        }
+        rl.close();
 });

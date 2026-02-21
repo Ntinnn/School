@@ -1,9 +1,14 @@
-foods = [
-    {nama: "Nasi Goreng", jenis: "Makanan Berat",kalori: 400}, 
-    {nama: "Soto Mie", jenis: "Makanan Berat", kalori: 297}, 
-    {nama: "Buger", jenis: "Makanan Ringan", kalori: 300}, 
-    {nama: "Soto Kambing", jenis: "Makanan Berat", kalori: 400},
-    {nama: "Ayam Goreng", jenis: "Makanan Berat", kalori: 245}
-];
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-console.log("Nama Makanan: " + foods[3].nama)
+rl.question("Masukkan sebuah angka: ", (desc) =>{
+    const strInt = parseFloat(desc);
+    console.log(desc)
+    console.log(typeof string);
+    console.log(strInt);
+    console.log(typeof strInt);
+    rl.close();
+});

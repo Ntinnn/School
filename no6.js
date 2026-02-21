@@ -1,8 +1,15 @@
-ciites = [
-    {nama: "Jakarta", populasi: "10 Jt", negara: "Indonesia"},
-    {nama: "Shanghai", populasi: "29,21 Jt", negara: "China"},
-    {nama: "New York", populasi: "8,4 Jt", negara: "Amerika Serikat"},
-    {nama: "Tokyo", populasi: "37,19 Jt", negara: "Jepang"},
-]
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-console.log("Nama Kota: " + ciites[1].nama)
+rl.question("Masukkan angka desimal pertama : ", (int) => {
+rl.question("Masukkan angka desimal kedua : ", (desc) =>{
+    const strInt1 = parseFloat (int);
+    const strInt2 = parseFloat (desc);
+    const jumlah = strInt1 - strInt2;
+    console.log(jumlah)
+    rl.close();
+});
+});
