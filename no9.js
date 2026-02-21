@@ -1,19 +1,8 @@
-function isPrime(number) {
-    if (number <= 1) {
-        return false;
-    }
-
-    for (let i = 2; i <= Math.sqrt(number); i++) {
-        if (number % i === 0) {
-            return false;
-        }
-    }
-    return true;
-}
-
-const angka = 9;
-if (isPrime(angka)) {
-    console.log(angka + " adalah bilangan prima");
-} else {
-    console.log(angka + " bukan bilangan prima");
-}
+animals = [
+    { nama: "Sparky", jenis: "Anjing", suara: "Guk Guk"},
+    { nama: "Whiskers", jenis: "Kucing", suara: "Meong Meong"},
+    { nama: "Polly", jenis: "Burung Kakatua", suara: "Krak Krak"}
+]
+animals.forEach(item => {
+    console.log(`Suara Hewan : ${item.suara}`)
+});

@@ -1,15 +1,7 @@
-setTimeout(function() {
-    console.log("Awal eksekusi.");
-});
+studentObj = {
+    name: "Joko Anwar",
+    age: 18,
+    grade: "12A"
+}
 
-setTimeout(function() {
-    console.log("Pertama, saya akan dicetak setelah 2 detik.");
-});
-
-setTimeout(function() {
-    console.log("Kedua, saya akan dicetak setelah 1 detik");
-});
-
-setTimeout(function() {
-    console.log("Akhir eksekusi.");
-});
+console.log("Umur Joko Anwar: " + studentObj.age)

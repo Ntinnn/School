@@ -1,33 +1,11 @@
-const readline = require(`readline`);
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+ciites = [
+    {nama: "Jakarta", populasi: "10 Jt", negara: "Indonesia"},
+    {nama: "Shanghai", populasi: "29,21 Jt", negara: "China"},
+    {nama: "New York", populasi: "8,4 Jt", negara: "Amerika Serikat"},
+    {nama: "Tokyo", populasi: "37,19 Jt", negara: "Jepang"},
+]
 
-var total = {};
-let i = 0;
-
-rl.question(`Jumlah barang yang ingin Kamu masukkan ke stok ;`, (jumlah) => {
-    let inputTotal = () => {
-        rl.question(`Masukkan nama barang ;`, (namaBarang) => {
-            rl.question(`Jumlah bertambah untuk setiap barang ${namaBarang} ;`, (tambahBarang) => {
-                tambahBarang = Number(tambahBarang);
-                total[namaBarang] = tambahBarang;
-                i++;
-                if (i < jumlah) {
-                    inputTotal();
-                } else {
-                    let totalNama = [];
-                    let totalBarang = 0;
-                    for (let [namaBarang, tambahBarang] of Object.entries(total)) {
-                        totalNama.push(namaBarang)
-                        totalBarang += tambahBarang;
-                    }
-                    console.log(`Total penambahan ${totalNama.join(`, `)}: ${totalBarang}`);
-                    rl.close();
-                };
-            });
-        });
-    };
-    inputTotal();
-});
+namaNegara = ciites.map(country => {
+    return country.negara
+})
+console.log(namaNegara)

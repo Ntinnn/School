@@ -1,8 +1,8 @@
-function isGenap(angka) {
-    return angka % 2 === 0;
-}
+ciites = [
+    {nama: "Jakarta", populasi: "10 Jt", negara: "Indonesia"},
+    {nama: "Shanghai", populasi: "29,21 Jt", negara: "China"},
+    {nama: "New York", populasi: "8,4 Jt", negara: "Amerika Serikat"},
+    {nama: "Tokyo", populasi: "37,19 Jt", negara: "Jepang"},
+]
 
-let angka1 = 6;
-let angka2 = 9;
-console.log(`${angka1} adalah angka genap: ${isGenap(angka1)}`);
-console.log(`${angka2} adalah angka genap: ${isGenap(angka2)}`);
+console.log("Nama Kota: " + ciites[1].nama)
